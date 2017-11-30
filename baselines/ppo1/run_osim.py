@@ -6,7 +6,8 @@ from baselines import logger
 from osim.env import RunEnv
 
 def train(cpus, num_timesteps, seed):
-    from baselines.ppo1 import mlp_policy, pposgd_simple
+    from baselines.ppo1 import mlp_policy
+    from baselines.trpo_mpi import trpo_mpi
     U.make_session(num_cpu=cpus).__enter__()
     set_global_seeds(seed)
     env = RunEnv(visualize=False)
@@ -16,13 +17,11 @@ def train(cpus, num_timesteps, seed):
     env = bench.Monitor(env, logger.get_dir())
     env.seed(seed)
     gym.logger.setLevel(logging.WARN)
-    pposgd_simple.learn(env, policy_fn,
+    trpo_mpi.learn(env, policy_fn,
             max_timesteps=num_timesteps,
-            timesteps_per_actorbatch=2048,
-            clip_param=0.2, entcoeff=0.0,
-            optim_epochs=10, optim_stepsize=3e-4, optim_batchsize=64,
-            gamma=0.99, lam=0.95, schedule='linear',
-        )
+            timesteps_per_batch=2048,
+            max_kl=0.5, cg_iters=10, cg_damping=0.1,
+            gamma=0.99, lam=0.98, vf_iters=5, vf_stepsize=1e-3)
     env.close()
 
 def main():
