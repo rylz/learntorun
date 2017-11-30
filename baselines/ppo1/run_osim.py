@@ -3,14 +3,14 @@ from baselines.common import set_global_seeds, tf_util as U
 from baselines import bench
 import gym, logging
 from baselines import logger
-from osim.env import RunEnv
+from env.velocity_reward import VelocityRewardEnv
 
 def train(cpus, num_timesteps, seed):
     from baselines.ppo1 import mlp_policy
     from baselines.trpo_mpi import trpo_mpi
     U.make_session(num_cpu=cpus).__enter__()
     set_global_seeds(seed)
-    env = RunEnv(visualize=False)
+    env = VelocityRewardEnv(visualize=False)
     def policy_fn(name, ob_space, ac_space):
         return mlp_policy.MlpPolicy(name=name, ob_space=ob_space, ac_space=ac_space,
             hid_size=64, num_hid_layers=2)
