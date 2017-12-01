@@ -11,5 +11,5 @@ class VelocityRewardEnv(RunEnv):
             lig = opensim.CoordinateLimitForce.safeDownCast(self.osim_model.forceSet.get(j))
             lig_pen += lig.calcLimitForce(self.osim_model.state) ** 2
 
-        velocity = self.current_state[STATE_VELOCITY]
+        velocity = self.current_state[self.STATE_VELOCITY]
         return velocity - math.sqrt(lig_pen) * 10e-8
