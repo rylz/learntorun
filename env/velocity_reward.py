@@ -3,8 +3,7 @@ from osim.env import *
 class VelocityRewardEnv(RunEnv):
     STATE_VELOCITY = 4 # center of mass velocity index in the state vector
 
-    @override
-    def compute_reward(...):
+    def compute_reward(self):
         # Compute ligaments penalty
         lig_pen = 0
         # Get ligaments
