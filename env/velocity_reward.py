@@ -1,6 +1,7 @@
 from osim.env import *
+from augmented_run import AugRunEnv
 
-class VelocityRewardEnv(RunEnv):
+class VelocityRewardEnv(AugRunEnv):
     STATE_VELOCITY = 4 # center of mass velocity index in the state vector
 
     def compute_reward(self):
