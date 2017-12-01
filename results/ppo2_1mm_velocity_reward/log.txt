@@ -1,0 +1,1 @@
+Logging to /home/ubuntu/learntorun/results/ppo2_1mm_velocity_reward
