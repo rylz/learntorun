@@ -27,7 +27,7 @@ class Monitor(Wrapper):
             self.f = open(filename, "wt")
             self.f.write('#%s\n'%json.dumps({"t_start": self.tstart, "gym_version": gym.__version__,
                 "env_id": env.spec.id if env.spec else 'Unknown'}))
-            self.logger = csv.DictWriter(self.f, fieldnames=('r', 'l', 't')+reset_keywords)
+            self.logger = csv.DictWriter(self.f, fieldnames=('r', 'l', 's', 't')+reset_keywords)
             self.logger.writeheader()
 
         self.reset_keywords = reset_keywords
