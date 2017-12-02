@@ -1,9 +1,8 @@
 from osim.env import *
 from env.augmented_run import AugRunEnv
+from env.model_metadata import *
 
 class VelocityRewardEnv(AugRunEnv):
-    STATE_VELOCITY = 4 # center of mass velocity index in the state vector
-
     def compute_reward(self):
         # Compute ligaments penalty
         lig_pen = 0
@@ -12,5 +11,5 @@ class VelocityRewardEnv(AugRunEnv):
             lig = opensim.CoordinateLimitForce.safeDownCast(self.osim_model.forceSet.get(j))
             lig_pen += lig.calcLimitForce(self.osim_model.state) ** 2
 
-        velocity = self.current_state[self.STATE_VELOCITY]
+        velocity = self.current_state[PELVIS_X_VEL]
         return velocity - math.sqrt(lig_pen) * 10e-8
