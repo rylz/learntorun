@@ -17,6 +17,7 @@ ENVS = {
 }
 MODELS = {
     'ppo2_mlp': models.ppo2.ppo2_mlp_defaults,
+    'ppo2_mlp_faster_lr': models.ppo2.ppo2_mlp_faster_learning_rate,
 }
 
 LOG_BASE_PATH = '/home/ubuntu/learntorun/results'
