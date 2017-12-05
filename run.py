@@ -66,7 +66,8 @@ def main():
         while osp.exists(osp.join(LOG_BASE_PATH, args.tag)):
             if VERSIONED_TAG_RE.search(args.tag):
                 # increment the version by one
-                VERSIONED_TAG_RE.sub(lambda m: '_v' + str(int(m.group(0)[2:])+1), args.tag)
+                args.tag = VERSIONED_TAG_RE.sub(
+                        lambda m: '_v' + str(int(m.group(0)[2:])+1), args.tag)
             else:
                 # it's not yet versioned - start by appending _v2
                 args.tag += '_v2'
