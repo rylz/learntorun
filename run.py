@@ -60,15 +60,16 @@ def main():
             # load the most recent snapshot
             args.load = osp.join(tag_checkpoints, sorted(os.listdir(tag_checkpoints))[-1])
 
-    # ensure that the tag name is unique so that it doesn't collide with current log directories
-    VERSIONED_TAG_RE = re.compile('_v[0-9]+$')
-    while osp.exists(args.tag):
-        if VERSIONED_TAG_RE.search(args.tag):
-            # increment the version by one
-            VERSIONED_TAG_RE.sub(lambda m: '_v' + str(int(m.group(0)[2:])+1), args.tag)
-        else:
-            # it's not yet versioned - start by appending _v2
-            args.tag += '_v2'
+    if args.tag:
+        # ensure that the tag name is unique so that it doesn't collide with current log directories
+        VERSIONED_TAG_RE = re.compile('_v[0-9]+$')
+        while osp.exists(osp.join(LOG_BASE_PATH, args.tag)):
+            if VERSIONED_TAG_RE.search(args.tag):
+                # increment the version by one
+                VERSIONED_TAG_RE.sub(lambda m: '_v' + str(int(m.group(0)[2:])+1), args.tag)
+            else:
+                # it's not yet versioned - start by appending _v2
+                args.tag += '_v2'
 
     # possibly start tensorboard
     if args.tb:
