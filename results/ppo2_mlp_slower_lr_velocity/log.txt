@@ -1,0 +1,1 @@
+Logging to /home/ubuntu/learntorun/results/ppo2_mlp_slower_lr_velocity
