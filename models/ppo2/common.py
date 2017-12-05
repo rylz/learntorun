@@ -21,7 +21,7 @@ POLICIES = {
 
 def train(num_timesteps, seed, policy, make_env, ncpu=None, load=None,
         # following are hyperparameters for ppo2
-        lr=3e-4):
+        lr=3e-4, cliprange=.2):
     """Train the osim walker environment using an optimized PPO policy.
 
     policy can be any of the keys in the above POLICIES dict.
@@ -59,6 +59,6 @@ def train(num_timesteps, seed, policy, make_env, ncpu=None, load=None,
                lam=0.95, gamma=0.99, noptepochs=10, log_interval=1,
                ent_coef=0.0,
                lr=lr,
-               cliprange=0.2,
+               cliprange=cliprange,
                total_timesteps=num_timesteps,
                save_interval=5, load_path=load)
