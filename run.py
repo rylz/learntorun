@@ -20,6 +20,7 @@ MODELS = {
     'ppo2_mlp_faster_lr': models.ppo2.ppo2_mlp_faster_learning_rate,
     'ppo2_mlp_slower_lr': models.ppo2.ppo2_mlp_slower_learning_rate,
     'ppo2_mlp_smaller_cliprange': models.ppo2.ppo2_mlp_smaller_cliprange,
+    'ppo2_mlp_faster_lr_smaller_cliprange': models.ppo2.ppo2_mlp_faster_lr_smaller_cliprange,
 }
 
 LOG_BASE_PATH = '/home/ubuntu/learntorun/results'
