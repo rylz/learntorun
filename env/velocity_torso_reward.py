@@ -1,6 +1,7 @@
 from osim.env import *
+from env.augmented_run import AugRunEnv
 
-class VelocityTorsoRewardEnv(RunEnv):
+class VelocityTorsoRewardEnv(AugRunEnv):
     STATE_VELOCITY = 4 # center of mass velocity index in the state vector
     TORSO_Y = 27
 

@@ -11,6 +11,7 @@ import env
 import models
 
 ENVS = {
+    'baseline' : env.augmented_run.AugRunEnv,
     'velocity': env.velocity_reward.VelocityRewardEnv,
     'knee': env.knee_reward.KneeRewardEnv,
     'velocity_torso': env.velocity_torso_reward.VelocityTorsoRewardEnv,
