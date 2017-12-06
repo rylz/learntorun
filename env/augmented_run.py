@@ -15,6 +15,6 @@ class AugRunEnv(RunEnv):
         return delta_x - math.sqrt(lig_pen) * 10e-8
 
     def step(self, action):
-        res = super(RunEnv, self)._step(action)
+        res = super(AugRunEnv, self)._step(action)
         res[3]['metric'] = self.compute_metric()
         return res;
