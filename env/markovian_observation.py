@@ -3,11 +3,7 @@ from env.augmented_run import AugRunEnv
 from env.model_metadata import *
 
 class MarkovianObsEnv(AugRunEnv):
-  def __init__(self, visualize = True, max_obstacles = 3):
-    super(MarkovianObsEnv, self).__init__(visualize, max_obstacles)
-    ninput = self.ninput + PSOAS_L - HEAD_X
-    self.observation_space = ( [-math.pi] * ninput, [math.pi] * ninput )
-    self.observation_space = convert_to_gym(self.observation_space)
+  ninput = 55
 
   def get_observation(self):
     bodies = ['head', 'pelvis', 'torso', 'toes_l', 'toes_r', 'talus_l', 'talus_r']
