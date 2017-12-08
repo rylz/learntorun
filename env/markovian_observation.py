@@ -31,4 +31,3 @@ class MarkovianObsEnv(AugRunEnv):
     else:
       body_vel = [0. for i in range(HEAD_X, PSOAS_L)]
     self.current_state = current_state + body_vel
-    return self.current_state

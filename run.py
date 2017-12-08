@@ -15,6 +15,9 @@ ENVS = {
     'velocity': env.velocity_reward.VelocityRewardEnv,
     'knee': env.knee_reward.KneeRewardEnv,
     'velocity_torso': env.velocity_torso_reward.VelocityTorsoRewardEnv,
+    'medium': env.medium_reward.MediumRewardEnv,
+    'markovian_obs': env.markovian_observation.MarkovianObsEnv,
+    'mixed': env.mixed_reward.MixedRewardEnv,
     'deep_mind': env.deep_mind_reward.DeepMindRewardEnv,
 }
 MODELS = {
