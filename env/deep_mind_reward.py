@@ -33,7 +33,9 @@ class DeepMindRewardEnv(AugRunEnv):
                 self.current_state[model_metadata.TOES_R_Y])
         delta_h = torso - higher_foot
 
-        threshold = 1 if delta_h < 1 else 0
+        # penalize the foot for deviating from "ideal" 1.2 meters from torso in vertical dimension
+        threshold = abs(delta_h - 1.2)
+        # heavier penalty for being very close to the torso
         indicator = 1 if delta_h < 0.3 else 0
 
         return 10 * velocity + 0.5 * torso - threshold - 10 * indicator - math.sqrt(lig_pen) * 10e-7
